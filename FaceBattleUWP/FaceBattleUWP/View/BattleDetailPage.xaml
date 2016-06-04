@@ -1,0 +1,31 @@
+﻿<base:BindablePage
+    x:Class="FaceBattleUWP.View.BattleDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FaceBattleUWP.View"
+    xmlns:base="using:FaceBattleUWP.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="{StaticResource FaceBattleBlackColor}">
+
+    <Grid Background="{StaticResource FaceBattleBlackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Image Source="{x:Bind BattleVM.CurrentBattle.CompetitorRound.RoundImageBitmap,Mode=OneWay}"/>
+            <Border Height="10" Background="White" VerticalAlignment="Bottom"/>
+            <Grid Margin="10" Height="50" Background="{StaticResource AngryColor}" VerticalAlignment="Top">
+                <TextBlock Text="He is 100% angry" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="20" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Image Source="{x:Bind BattleVM.CurrentBattle.MyRound.RoundImageBitmap,Mode=OneWay}"/>
+            <Grid Margin="10" Height="50" Background="{StaticResource SadColor}" VerticalAlignment="Bottom">
+                <TextBlock Text="You are 67% sad" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="20" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+            </Grid>
+        </Grid>
+        <Image Grid.RowSpan="2" MaxHeight="80" Source="{x:Bind BattleVM.ResultBitmap,Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</base:BindablePage>

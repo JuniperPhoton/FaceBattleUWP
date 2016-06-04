@@ -1,0 +1,43 @@
+﻿<UserControl
+    x:Class="FaceBattleUWP.UC.AddControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FaceBattleUWP.UC"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="600"
+    d:DesignWidth="400">
+
+    <Grid Background="{StaticResource FaceBattleMainColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="CHOOSE A MODE" Foreground="Black" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="33.333"/>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Button Command="{x:Bind MainVM.EnterClassicModeCommand,Mode=OneWay}" MaxWidth="300" Margin="5,20,5,5" Style="{StaticResource ButtonCommonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
+                <Border BorderThickness="2" CornerRadius="10" Background="Black">
+                    <TextBlock Margin="10" Text="Classic mode" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="ms-appx:/Assets/comicz.ttf#Comic Sans MS"/>
+                </Border>
+            </Button>
+            <TextBlock MaxWidth="300" Margin="5" TextWrapping="Wrap" Text="Happiness beats anger, anger beats sadness,
+sadness beats happiness." Foreground="Black" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Command="{x:Bind MainVM.EnterHulkModeCommand,Mode=OneWay}" MaxWidth="300" Margin="5,20,5,5" Style="{StaticResource ButtonCommonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
+                <Border BorderThickness="2" CornerRadius="10" Background="Black">
+                    <TextBlock Margin="10" Text="Hulk mode" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="ms-appx:/Assets/comicz.ttf#Comic Sans MS"/>
+                </Border>
+            </Button>
+            <TextBlock MaxWidth="300" Margin="5" TextWrapping="Wrap" Text="Be the angries and win the game." Foreground="Black" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </StackPanel>
+        <Button x:Name="CancelBtn" Click="CancelBtn_Click" Grid.RowSpan="2" Style="{StaticResource ButtonCommonStyle}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Background="{x:Null}">
+            <Grid RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <CompositeTransform Rotation="45"/>
+                </Grid.RenderTransform>
+                <Ellipse Width="50" Height="50" Fill="#FFFFD337" Stroke="{StaticResource FaceBattleBlackColor}"/>
+                <SymbolIcon Symbol="Add" Foreground="Black"/>
+            </Grid>
+        </Button>
+    </Grid>
+</UserControl>

@@ -1,0 +1,63 @@
+﻿<UserControl
+    x:Class="FaceBattleUWP.UC.PublicControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FaceBattleUWP.UC"
+    xmlns:model="using:FaceBattleUWP.Model"
+    xmlns:attach="using:JP.Utils.Framework"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE128;" FontSize="80" Foreground="#FF323232" />
+            <TextBlock Text="No battles around." Foreground="#FF656565" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" FontSize="26.667" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+        </StackPanel>-->
+        <ListView 
+            RequestedTheme="Dark"
+            SelectionMode="None"
+            IsItemClickEnabled="True"
+            attach:ListViewBaseCommandEx.ItemClickCommand="{x:Bind MainVM.TapItemCommand,Mode=OneWay}"
+            ItemsSource="{x:Bind MainVM.PublicList,Mode=OneWay}"
+            ItemContainerStyle="{StaticResource ListViewItemStyle1}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Battle">
+                    <Grid Height="50" Margin="0,10,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Ellipse Height="50" Width="50">
+                                <Ellipse.Fill>
+                                    <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/Avatar/10.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <Ellipse Height="50" Width="50" >
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{x:Bind Starter.AvatarBitmap,Mode=OneWay}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+                        <Grid Grid.Column="1" Margin="20,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Foreground="White" Text="{x:Bind Starter.UserName,Mode=OneWay}" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                                <TextBlock Foreground="White" Text="{x:Bind Time,Mode=OneWay}" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" Opacity="0.5"/>
+                            </StackPanel>
+                            <Border Background="{StaticResource FaceBattleMainColor}" Margin="10,0,0,0" Grid.Row="1" HorizontalAlignment="Right">
+                                <TextBlock Margin="3" Text="{x:Bind TypeString,Mode=OneWay}" Foreground="Black" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                            </Border>
+                        </Grid>
+                    </Grid>                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>

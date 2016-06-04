@@ -1,0 +1,32 @@
+﻿<UserControl
+    x:Class="FaceBattleUWP.UC.MeControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FaceBattleUWP.UC"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="600"
+    d:DesignWidth="400">
+
+    <Grid MaxWidth="600" Background="{StaticResource FaceBattleBlackColor}">
+        <StackPanel VerticalAlignment="Top" Margin="0,50,0,0">
+            <Ellipse Width="70" Height="70">
+                <Ellipse.Fill>
+                    <ImageBrush Stretch="Fill" ImageSource="{x:Bind MainVM.CurrentUser.AvatarBitmap,Mode=OneWay}"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock Text="{x:Bind MainVM.CurrentUser.UserName,Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0" FontSize="20" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+            <Button Margin="10,50,10,5" Height="50" Style="{StaticResource ButtonCommonStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{x:Null}">
+                <Border CornerRadius="10" Background="Black">
+                    <TextBlock Text="SETTINGS" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                </Border>
+            </Button>
+            <Button  Command="{x:Bind MainVM.LogoutCommand,Mode=OneWay}" Margin="10,0,10,10" Height="50" Style="{StaticResource ButtonCommonStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{x:Null}">
+                <Border CornerRadius="10" Background="Black">
+                    <TextBlock Text="LOGOUT" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                </Border>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,66 @@
+﻿<base:BindablePage
+    x:Class="FaceBattleUWP.View.UploadAnalysisPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FaceBattleUWP.View"
+    xmlns:base="using:FaceBattleUWP.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" 
+    Background="Black">
+
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+        <Grid d:IsHidden="True" Grid.Row="1" Background="Black">
+            <Grid x:Name="ConfirmGrid">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="UPLOAD AND ANALYSE THIS PHOTO?" HorizontalAlignment="Center" Foreground="White" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                    <Button x:Name="ConfirmUploadBtn" Click="ConfirmUploadBtn_Click" Command="{x:Bind UploadAnalysisVM.ConfirmLoadingCommand,Mode=OneWay}" Height="50" Style="{StaticResource ButtonCommonStyle}" Background="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,0">
+                        <Border CornerRadius="10" Background="{StaticResource FaceBattleMainColor}">
+                            <TextBlock Text="SURE~" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" Foreground="Black"/>
+                        </Border>
+                    </Button>
+                    <Button Command="{x:Bind UploadAnalysisVM.BackToCaptureCommand,Mode=OneWay}" Height="50" Style="{StaticResource ButtonCommonStyle}" Background="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,10,0,0">
+                        <Border CornerRadius="10" Background="#FF464646">
+                            <TextBlock Text="CHOSSE ANOTHER ONE" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" Foreground="White"/>
+                        </Border>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Image x:Name="DisplayImage" MaxWidth="600" Source="{x:Bind UploadAnalysisVM.ImageBitmap,Mode=OneWay}" Stretch="UniformToFill" Margin="0,20,0,0"/>
+        <Grid x:Name="ResultGrid" MaxWidth="600" Grid.Row="1" Margin="0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center">
+            <Grid.RenderTransform>
+                <CompositeTransform TranslateY="-50"/>
+            </Grid.RenderTransform>
+            <Border Background="{x:Bind UploadAnalysisVM.CurrentResult.ResultColor,Mode=OneWay}"/>
+            <StackPanel Margin="10,30">
+                <TextBlock Text="You are" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" FontSize="20" Opacity="0.6" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                <Grid>
+                    <TextBlock Text="{x:Bind UploadAnalysisVM.CurrentResult.FaceName,Mode=OneWay,FallbackValue=Angry}" Margin="0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" FontWeight="Bold" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                    <TextBlock Text="{x:Bind UploadAnalysisVM.CurrentResult.Similarity,Mode=OneWay,FallbackValue=0.95}" Margin="20,0,0,0" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="40" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS"/>
+                </Grid>
+                <Grid Margin="0,15,0,0">
+                    <Rectangle Height="5" Stroke="White" StrokeThickness="1"/>
+                    <Rectangle x:Name="ProgressRect" Height="5" Fill="White" Margin="0"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <Grid d:IsHidden="True" Visibility="{x:Bind UploadAnalysisVM.ShowLoading,Mode=OneWay}" Grid.RowSpan="2">
+            <Border x:Name="MaskBorder" Background="#B2000000"/>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ProgressRing IsActive="True" Width="50" Height="50" Foreground="White"/>
+                <TextBlock Text="ANALYSYING..." HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" Margin="0,5,0,0" FontSize="20"/>
+                <Button Command="{x:Bind UploadAnalysisVM.CancelLoadingCommand,Mode=OneWay}" Style="{StaticResource ButtonCommonStyle}" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Border CornerRadius="5" Height="50" Background="#FFCECECE" Margin="0,20,0,0">
+                        <TextBlock Text="CANCEL" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="ms-appx:/Assets/comic.ttf#Comic Sans MS" Foreground="Black"/>
+                    </Border>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</base:BindablePage>

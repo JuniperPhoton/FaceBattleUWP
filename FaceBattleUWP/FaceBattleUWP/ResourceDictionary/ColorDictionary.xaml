@@ -1,0 +1,18 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+    <Color x:Key="CommandBarGrey">#FFF1F1F1</Color>
+    <Color x:Key="ButtonPointOver">#FFE7E7E7</Color>
+    <Color x:Key="ListButtonSelected">#7A000000</Color>
+    <Color x:Key="ListButtonPointOver">#28FFFFFF</Color>
+    <Color x:Key="ListButtonPressed">#78FFFFFF</Color>
+    <SolidColorBrush x:Key="FaceBattleMainColor">#FFFFD337</SolidColorBrush>
+    <SolidColorBrush x:Key="FaceBattleMainDarkColor">#FFD1AB26</SolidColorBrush>
+    <SolidColorBrush x:Key="FaceBattleLightColor">#FFFCDB63</SolidColorBrush>
+    <SolidColorBrush x:Key="FaceBattleBlackColor">#FF1f1f1f</SolidColorBrush>
+    <SolidColorBrush x:Key="AngryColor">#FFAB2D2D</SolidColorBrush>
+    <SolidColorBrush x:Key="SadColor">#FF1F6C90</SolidColorBrush>
+    <SolidColorBrush x:Key="HappyColor">#FFE7B338</SolidColorBrush>
+    <SolidColorBrush x:Key="NormalColor">#FF2F906B</SolidColorBrush>
+</ResourceDictionary>
